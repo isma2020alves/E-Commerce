@@ -464,6 +464,30 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.5"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -1245,12 +1269,22 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Infrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.5",
-      "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.5",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -1261,11 +1295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\E-Commerce\\api\\API.csproj",
+      "projectUniqueName": "D:\\E-Commerce\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\E-Commerce\\api\\API.csproj",
+      "projectPath": "D:\\E-Commerce\\API\\API.csproj",
       "packagesPath": "C:\\Users\\neube\\.nuget\\packages\\",
-      "outputPath": "D:\\E-Commerce\\api\\obj\\",
+      "outputPath": "D:\\E-Commerce\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -1285,7 +1319,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\E-Commerce\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\E-Commerce\\Infrastructure\\Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1301,10 +1339,6 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
-            "target": "Package",
-            "version": "[5.0.5, )"
-          },
-          "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[5.0.5, )"
           },
