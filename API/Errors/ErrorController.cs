@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers.Errors
 {
     [Route("errors/{code}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorController : BaseApiController
     {
        public IActionResult Error(int code)
